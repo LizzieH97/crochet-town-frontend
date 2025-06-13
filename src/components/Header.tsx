@@ -1,0 +1,32 @@
+import { Link } from "react-router-dom";
+
+export default function Header() {
+  const navButtonStyling =
+    "bg-burgundy h-[50px] rounded-xl border-4 border-plum flex items-center justify-center p-3 font-bold text-cream";
+  return (
+    <header className=" col-start-1 col-end-6 sticky flex flex-row gap-8 bg-bright-green w-full p-5 border-4 border-burgundy rounded-3xl">
+      <ul className="flex flex-row gap-3">
+        <li>
+          <Link to="/">
+            <img src="/logo.png" alt="logo" className="w-[80px] h-[80px]"></img>
+          </Link>
+        </li>
+        <li className={navButtonStyling}>
+          <Link to="/categories">Categories</Link>
+        </li>
+        <li className={navButtonStyling}>Colours</li>
+        <li className={navButtonStyling}>Difficulty</li>
+        <li className={navButtonStyling}>Hook Size</li>
+        <li>
+          <input
+            type="text"
+            className="bg-plum h-[50px] w-[500px] rounded-xl border-4 border-burgundy p-3 font-bold text-black"
+          ></input>
+        </li>
+      </ul>
+      <Link to="/account" className={navButtonStyling}>
+        Log in!
+      </Link>
+    </header>
+  );
+}

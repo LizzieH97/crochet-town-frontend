@@ -1,0 +1,42 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        cream: "#e3daae",
+        tomato: "#BF213E",
+        peach: "#D26B47",
+        coffee: "#97673D",
+        sponge: "#fbad0e",
+        "tomato-dark": "#de2910",
+        "sponge-dark": "#c7710e",
+        "coffee-dark": "#4d2d05",
+        "cream-dark": "#a98f0c",
+        "peach-dark": "#da5c3f",
+        "dark-jungle": "#1A2421",
+        forest: "#0B6623",
+        hunter: "#3F704D",
+        "pale-camo": "#78866B",
+        army: "#4B5320",
+        moss: "#4A5D23",
+        olive: "#708238",
+        avocado: "#568203",
+        asparagus: "#56A632",
+        sage: "#9DC183",
+        "bright-green": "#48A860",
+        mantis: "#74C365",
+        jade: "#00A86B",
+        emerald: "#50C878",
+        plum: "#7B3740",
+        burgundy: "#5B1F1B",
+        purpleish: "#531F42",
+        teal: "#096B6A",
+      },
+    },
+  },
+  plugins: [
+    require("tailwind-scrollbar"),
+    // optionally: require('tailwind-scrollbar-hide')
+  ],
+};
