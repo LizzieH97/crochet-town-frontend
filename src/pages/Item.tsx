@@ -35,37 +35,42 @@ export default function Item() {
       <section className="col-start-5 col-end-6 row-start-2 row-span-full h-full sticky">
         <SideBar />
       </section>
-      <section className="col-start-1 col-end-5 pb-4 m-6 flex flex-col align-center justify-center items-center">
-        <h1 className="p-5 bg-plum text-7xl text-cream text-center font-bold border-4 border-burgundy rounded-3xl">
+      <section className="col-start-1 col-end-5 pb-4 m-4 flex flex-col items-center">
+        <h1 className="p-4 bg-plum text-7xl text-cream text-center font-bold border-4 border-burgundy rounded-3xl">
           {item.name}
         </h1>
-        <div className="pt-4 grid grid-cols-2 grid-rows-6 gap-4">
-          <img
-            src={item.pic}
-            alt={item.name}
-            className="w-[200px] h-[300px] col-start-1 row-start-1 row-end-5 rounded-3xl"
-          ></img>
-          <ul className="bg-cream text-center border-4 border-teal rounded-3xl">
-            <li className="col-2 row-1 mb-2 block text-2xl font-semibold leading-snug tracking-normal text-burgundy antialiased text-center ">
-              Category: {item.category}
-            </li>
-            <li className="col-2 row-2 mb-2 block text-2xl font-semibold leading-snug tracking-normal text-burgundy antialiased text-center ">
-              Difficulty: {item.difficulty}
-            </li>
-            <li className="col-2 row-3 mb-2 block text-2xl font-semibold leading-snug tracking-normal text-burgundy antialiased text-center ">
-              Hook Size: {item.hook_size}mm
-            </li>
-            <li className="col-2 row-4 mb-2 block text-2xl font-semibold leading-snug tracking-normal text-burgundy antialiased text-center ">
-              Finished Product Size: {item.end_size}
-            </li>
-          </ul>
-        </div>
-        <div className="row-start-5 col-start-1 col-end-3">
-          <Carousel
-            key={pattern.id}
-            id={pattern.id}
-            URLs={pattern.step_images.pattern}
-          />
+        <div>
+          <div className="relative">
+            {/* Background image */}
+            <img
+              src={item.pic}
+              alt={item.name}
+              className="absolute inset-0 w-80 h-80 object-cover opacity-25 rounded-3xl z-0"
+            />
+            {/* Content overlay */}
+            <ul className="relative z-10 bg-none bg-opacity-80 border-4 border-teal rounded-3xl p-6 flex flex-col justify-center w-80 h-80">
+              <li className="mb-2 text-2xl font-semibold text-burgundy text-center">
+                Category: {item.category}
+              </li>
+              <li className="mb-2 text-2xl font-semibold text-burgundy text-center">
+                Difficulty: {item.difficulty}
+              </li>
+              <li className="mb-2 text-2xl font-semibold text-burgundy text-center">
+                Hook Size: {item.hook_size}mm
+              </li>
+              <li className="mb-2 text-2xl font-semibold text-burgundy text-center">
+                Finished Product Size: {item.end_size}
+              </li>
+            </ul>
+          </div>
+          {/* Full-width carousel */}
+          <div className="col-span-2 mt-4">
+            <Carousel
+              key={pattern.id}
+              id={pattern.id}
+              URLs={pattern.step_images.pattern}
+            />
+          </div>
         </div>
       </section>
     </main>
