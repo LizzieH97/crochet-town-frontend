@@ -1,50 +1,24 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import ItemCard from "./components/ItemCard";
 import SideBar from "./components/SideBar";
-export const testData = [
-  {
-    title: "Avocado Toast",
-    imageURL: "/avotoastfrontfacing.jpg",
-    difficulty: "4/10",
-  },
-  {
-    title: "Berry Pie",
-    imageURL: "/newpiefrontfacing.jpg",
-    difficulty: "7/10",
-  },
-  {
-    title: "Wine Bottle",
-    imageURL: "/winefrontfacing.jpg",
-    difficulty: "3/10",
-  },
-  {
-    title: "Cannoli",
-    imageURL: "/newcannolifrontfacing.jpg",
-    difficulty: "1/10",
-  },
-  {
-    title: "Avocado Toast",
-    imageURL: "/avotoastfrontfacing.jpg",
-    difficulty: "4/10",
-  },
-  {
-    title: "Berry Pie",
-    imageURL: "/newpiefrontfacing.jpg",
-    difficulty: "7/10",
-  },
-  {
-    title: "Wine Bottle",
-    imageURL: "/winefrontfacing.jpg",
-    difficulty: "3/10",
-  },
-  {
-    title: "Cannoli",
-    imageURL: "/newcannolifrontfacing.jpg",
-    difficulty: "1/10",
-  },
-];
+import { fetchAllItems } from "./services/APICalls";
+
+import { supabase } from "./services/supabase";
+
 function App() {
+  const [items, setItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    const loadProjects = async () => {
+      const data = await fetchAllItems();
+      setItems(data);
+    };
+    loadProjects();
+  }, []);
+
+  console.log(items);
   return (
     <main className="grid bg-olive grid-cols-5 grid-rows-[auto_auto_1fr] grid-flow-row gap-5">
       <Header />
@@ -63,12 +37,13 @@ function App() {
       </section>
 
       <section className="col-start-1 col-end-5 grid grid-cols-4 p-4 grid-flow-row gap-10">
-        {testData.map((item) => {
+        {items.map((item) => {
           return (
             <ItemCard
-              title={item.title}
-              imageURL={item.imageURL}
+              title={item.name}
+              imageURL={item.pic}
               difficulty={item.difficulty}
+              id={item.id}
             />
           );
         })}

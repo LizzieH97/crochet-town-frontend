@@ -8,7 +8,7 @@ import Account from "./pages/Account";
 import Categories from "./pages/Categories";
 import HookSize from "./pages/HookSize";
 import Colours from "./pages/Colours";
-
+import Item from "./pages/Item";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -21,6 +21,7 @@ root.render(
         <Route path="/categories" element={<Categories />}></Route>
         <Route path="/hooksize" element={<HookSize />}></Route>
         <Route path="/colours" element={<Colours />}></Route>
+        <Route path="/item/:id" element={<Item />}></Route>
       </Routes>
     </React.StrictMode>
   </BrowserRouter>

@@ -1,7 +1,10 @@
+import { Navigate, useNavigate } from "react-router-dom";
+
 type ItemProps = {
   title: string;
   imageURL: string;
   difficulty: string;
+  id: string;
   variant?: "default" | "small";
 };
 
@@ -9,10 +12,14 @@ export default function ItemCard({
   title,
   imageURL,
   difficulty,
+  id,
   variant = "default",
 }: ItemProps) {
   const isSmall = variant === "small";
-
+  const navigate = useNavigate();
+  const handleClick = (id: string) => {
+    navigate(`/item/${id}`);
+  };
   return (
     <div
       className={`relative flex flex-col rounded-xl bg-bright-green bg-clip-border text-black shadow-md border-4 border-burgundy rounded-3xl 
@@ -43,6 +50,7 @@ export default function ItemCard({
           type="button"
           className={`select-none rounded-lg bg-burgundy text-cream text-center align-middle font-bold uppercase shadow-md border-4 border-plum rounded-3xl
           ${isSmall ? "py-0 px-2 text-xs" : "py-3 px-6 text-xs"}`}
+          onClick={() => handleClick(id)}
         >
           Try it out!
         </button>
