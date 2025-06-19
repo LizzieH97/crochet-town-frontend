@@ -18,7 +18,6 @@ function App() {
     loadProjects();
   }, []);
 
-  console.log(items);
   return (
     <main className="grid bg-olive grid-cols-5 grid-rows-[auto_auto_1fr] grid-flow-row gap-5">
       <Header />

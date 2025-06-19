@@ -11,12 +11,24 @@ export default function Header() {
             <img src="/logo.png" alt="logo" className="w-[80px] h-[80px]"></img>
           </Link>
         </li>
-        <li className={navButtonStyling}>
-          <Link to="/categories">Categories</Link>
+        <li>
+          <button className={navButtonStyling}>
+            <Link to="/categories">Categories</Link>
+          </button>
         </li>
-        <li className={navButtonStyling}>Colours</li>
-        <li className={navButtonStyling}>Difficulty</li>
-        <li className={navButtonStyling}>Hook Size</li>
+        <li>
+          <button className={navButtonStyling}>Colours</button>
+        </li>
+        <li>
+          <button className={navButtonStyling}>
+            <Link to="/difficulty">Difficulty</Link>
+          </button>
+        </li>
+        <li>
+          <button className={navButtonStyling}>
+            <Link to="/hooksize">Hook Size</Link>
+          </button>
+        </li>
         <li>
           <input
             type="text"

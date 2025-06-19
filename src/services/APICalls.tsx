@@ -34,3 +34,37 @@ export const fetchPatternById = async (id: string) => {
 
   return data;
 };
+
+export const fetchItemByCategory = async (category: string) => {
+  const { data, error } = await supabase
+    .from("items")
+    .select("*")
+    .eq("category", category);
+  if (error) {
+    console.log("Error fetching categories:", error.message);
+    return [];
+  }
+  return data;
+};
+export const fetchItemByDifficulty = async (difficulty: string) => {
+  const { data, error } = await supabase
+    .from("items")
+    .select("*")
+    .eq("difficulty", difficulty);
+  if (error) {
+    console.log("Error fetching categories:", error.message);
+    return [];
+  }
+  return data;
+};
+export const fetchItemByHookSize = async (hookSize: string) => {
+  const { data, error } = await supabase
+    .from("items")
+    .select("*")
+    .eq("hook_size", hookSize);
+  if (error) {
+    console.log("Error fetching categories:", error.message);
+    return [];
+  }
+  return data;
+};

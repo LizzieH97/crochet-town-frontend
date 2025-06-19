@@ -28,7 +28,7 @@ export default function Item() {
 
   if (!item) return <div>Loading item data...</div>;
   if (!pattern) return <div>Loading pattern data...</div>;
-  console.log(pattern);
+
   return (
     <main className="grid bg-olive grid-cols-5 grid-rows-[auto_auto_1fr] grid-flow-row gap-5">
       <Header />
@@ -36,19 +36,19 @@ export default function Item() {
         <SideBar />
       </section>
       <section className="col-start-1 col-end-5 pb-4 m-4 flex flex-col items-center">
-        <h1 className="p-4 bg-plum text-7xl text-cream text-center font-bold border-4 border-burgundy rounded-3xl">
-          {item.name}
-        </h1>
-        <div>
-          <div className="relative">
+        <div className="flex flex-row items-center justify-center">
+          <h1 className="p-4 bg-plum text-7xl text-cream text-center font-bold border-4 border-burgundy rounded-3xl w-96 mr-8">
+            {item.name}
+          </h1>
+          <div className="relative ml-8">
             {/* Background image */}
             <img
               src={item.pic}
               alt={item.name}
-              className="absolute inset-0 w-80 h-80 object-cover opacity-25 rounded-3xl z-0"
+              className="absolute inset-0 w-80 h-80 object-cover opacity-50 rounded-3xl z-0"
             />
             {/* Content overlay */}
-            <ul className="relative z-10 bg-none bg-opacity-80 border-4 border-teal rounded-3xl p-6 flex flex-col justify-center w-80 h-80">
+            <ul className="relative z-10 bg-none bg-opacity-70 border-4 border-teal rounded-3xl p-6 flex flex-col justify-center w-80 h-80">
               <li className="mb-2 text-2xl font-semibold text-burgundy text-center">
                 Category: {item.category}
               </li>
@@ -63,14 +63,14 @@ export default function Item() {
               </li>
             </ul>
           </div>
-          {/* Full-width carousel */}
-          <div className="col-span-2 mt-4">
-            <Carousel
-              key={pattern.id}
-              id={pattern.id}
-              URLs={pattern.step_images.pattern}
-            />
-          </div>
+        </div>
+        {/* Full-width carousel */}
+        <div className="col-span-2 mt-24 m-40">
+          <Carousel
+            key={pattern.id}
+            id={pattern.id}
+            URLs={pattern.step_images.pattern}
+          />
         </div>
       </section>
     </main>

@@ -1,16 +1,35 @@
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
+import { fetchAllItems, fetchItemByCategory } from "../services/APICalls";
+import { useNavigate } from "react-router-dom";
 
-const testCategories = [
-  "Blankets",
-  "Plush toys",
-  "Cardigans",
-  "Hats",
-  "Scarves",
-  "Baby Clothes",
-  "Earrings",
-];
 export default function Categories() {
+  const [items, setItems] = useState<any[]>([]);
+  useEffect(() => {
+    const loadProjects = async () => {
+      const itemData = await fetchAllItems();
+
+      setItems(itemData);
+    };
+    loadProjects();
+  }, []);
+  const uniqueCategories = Array.from(
+    new Map(
+      items.map((item) => [
+        item.category,
+        { category: item.category, pic: item.pic },
+      ])
+    ).values()
+  );
+
+  const navigate = useNavigate();
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const category = event.currentTarget.innerHTML;
+    navigate(`/categories/${category}`);
+    return;
+  };
+
   return (
     <main className="grid bg-olive grid-cols-5 grid-rows-[auto_auto_1fr] grid-flow-row gap-5">
       <Header />
@@ -22,13 +41,24 @@ export default function Categories() {
         inspiration ⬇
       </h2>
       <section className="col-start-1 col-end-5 grid grid-cols-4 p-3 grid-flow-row gap-2">
-        {testCategories.map((category) => {
+        {uniqueCategories.map((category) => {
           return (
-            <div
-              className="relative flex flex-col rounded-xl bg-burgundy  text-cream shadow-md border-4 border-bright-green rounded-3xl 
-      w-60 text-base h-40 text-center align-center justify-center text-3xl font-bold"
-            >
-              {category}
+            <div className="relative w-60 h-40">
+              {/* Background image */}
+              <img
+                src={category.pic}
+                className="absolute inset-0 w-full h-full object-cover opacity-50 rounded-3xl z-0"
+                alt={category.category}
+              />
+
+              {/* Overlay button */}
+              <button
+                className="relative z-10 flex flex-col rounded-3xl text-burgundy shadow-md border-4 border-burgundy bg-opacity-70 bg-none 
+    w-full h-full text-center justify-center items-center text-3xl font-bold"
+                onClick={(event) => handleClick(event)}
+              >
+                {category.category}
+              </button>
             </div>
           );
         })}

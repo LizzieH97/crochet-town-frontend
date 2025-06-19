@@ -9,6 +9,10 @@ import Categories from "./pages/Categories";
 import HookSize from "./pages/HookSize";
 import Colours from "./pages/Colours";
 import Item from "./pages/Item";
+import SingleCategory from "./pages/SingleCategory";
+import Difficulty from "./pages/Difficulty";
+import SingleDifficulty from "./pages/SingleDifficulty";
+import SingleHookSize from "./pages/SingleHookSize";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -19,9 +23,19 @@ root.render(
         <Route index element={<App />}></Route>
         <Route path="/account" element={<Account />}></Route>
         <Route path="/categories" element={<Categories />}></Route>
+        <Route path="/difficulty" element={<Difficulty />}></Route>
         <Route path="/hooksize" element={<HookSize />}></Route>
         <Route path="/colours" element={<Colours />}></Route>
         <Route path="/item/:id" element={<Item />}></Route>
+        <Route
+          path="/categories/:category"
+          element={<SingleCategory />}
+        ></Route>
+        <Route
+          path="/difficulty/:difficulty"
+          element={<SingleDifficulty />}
+        ></Route>
+        <Route path="/hooksize/:hooksize" element={<SingleHookSize />}></Route>
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
