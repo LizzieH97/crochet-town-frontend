@@ -59,6 +59,8 @@ export default function Difficulty() {
                 className="absolute inset-0 w-full h-full object-cover opacity-50 rounded-3xl z-0"
                 alt={item.difficulty}
               />
+
+              {/* Overlay button */}
               <button
                 className="relative z-10 flex flex-col rounded-3xl text-burgundy shadow-md border-4 border-burgundy bg-opacity-70 bg-none 
     w-full h-full text-center justify-center items-center text-3xl font-bold"
