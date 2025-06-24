@@ -36,7 +36,6 @@ export default function SignupForm() {
         return;
       }
 
-      // Now insert profile
       const { error: profileError } = await supabase.from("profiles").insert({
         id: result.user.id,
         username: "",

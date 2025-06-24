@@ -16,6 +16,8 @@ import SingleHookSize from "./pages/SingleHookSize";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import UpdateProfile from "./pages/UpdateProfile";
+import Account from "./pages/Account";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -32,6 +34,7 @@ root.render(
         <Route path="/colours" element={<Colours />}></Route>
         <Route path="/update" element={<UpdateProfile />}></Route>
         <Route path="/item/:id" element={<Item />}></Route>
+        <Route path="/account" element={<Account />}></Route>
         <Route
           path="/categories/:category"
           element={<SingleCategory />}

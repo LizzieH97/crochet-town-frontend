@@ -12,6 +12,7 @@ export default function EditForm() {
   const [full_name, setFull_Name] = useState("");
   const [bio, setBio] = useState("");
   const [avatar_url, setAvatar_url] = useState<File | null>(null);
+  let successMessage = "hidden";
   useEffect(() => {
     const getUser = async () => {
       const {
@@ -19,7 +20,7 @@ export default function EditForm() {
       } = await supabase.auth.getUser();
 
       if (user) {
-        setUserId(user.id); // ✅ ensure this is called BEFORE submit
+        setUserId(user.id);
       } else {
         setError("Not logged in.");
       }
@@ -35,7 +36,6 @@ export default function EditForm() {
     console.log("Updating profile for user:", userId);
     let uploadedAvatarUrl = null;
 
-    // 1. Upload avatar if there is a file
     const result = avatar_url
       ? await uploadAvatar(userId, avatar_url)
       : { success: true, url: null };
@@ -52,10 +52,9 @@ export default function EditForm() {
       username,
       full_name,
       bio,
-      avatar_url: result.url, // Save the URL in the DB
+      avatar_url: result.url,
     });
 
-    // 4. Handle result
     if (!result || typeof result !== "object") {
       setError("An unexpected error occurred.");
       setSuccess(false);
@@ -71,6 +70,7 @@ export default function EditForm() {
       setError("Unknown error.");
       setSuccess(false);
     }
+    successMessage = "flex text-burgundy font-bold";
   };
 
   return (
@@ -122,6 +122,7 @@ export default function EditForm() {
               Let's go!
             </button>
           </fieldset>
+          <p className={successMessage}>Yay! You're all sorted 🎉 </p>
         </form>
       </div>
     </div>
